@@ -239,6 +239,7 @@ class Form extends Component {
     resetTouched: this.resetTouched,
     clearFields: this.clearFields,
     getTouchedValues: this.getTouchedValues,
+    forceUpdateField: this.updateComponent
   };
 
   render() {
