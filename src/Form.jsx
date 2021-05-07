@@ -188,11 +188,6 @@ class Form extends Component {
     return isValid;
   };
 
-  forceFieldUpdate = (name = '') => {
-    this.touched.add(name)
-    this.updateComponent(name)
-  }
-
   getError = (name = '') => {
     return this.errors[name] || '';
   };
@@ -244,7 +239,6 @@ class Form extends Component {
     resetTouched: this.resetTouched,
     clearFields: this.clearFields,
     getTouchedValues: this.getTouchedValues,
-    forceFieldUpdate: this.forceFieldUpdate
   };
 
   render() {
