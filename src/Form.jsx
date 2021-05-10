@@ -196,6 +196,12 @@ class Form extends Component {
     return this.errors;
   };
 
+  clearFieldError = (name = '') => {
+    delete this.errors[name];
+    this.touched.delete(name);
+    this.updateComponent(name);
+  }
+
   resetTouched = () => {
     this.touched.clear();
   };
@@ -239,6 +245,7 @@ class Form extends Component {
     resetTouched: this.resetTouched,
     clearFields: this.clearFields,
     getTouchedValues: this.getTouchedValues,
+    clearFieldError: this.clearFieldError,
   };
 
   render() {
