@@ -202,14 +202,14 @@ class Form extends Component {
     const compareValue = getPath(values, compareName)
 
     if (comparedValue === compareValue) {
-      delete this.errors[compareValue];
-      this.touched.delete(compareValue);
-      this.updateComponent(compareValue);
+      delete this.errors[compareName];
+      this.touched.delete(compareName);
+      this.updateComponent(compareName);
     }
 
-    if (comparedValue !== compareValue && !this.validateField(compareValue)) {
-      this.touched.add(compareValue);
-      this.updateComponent(compareValue);
+    if (comparedValue !== compareValue && !this.validateField(compareName)) {
+      this.touched.add(compareName);
+      this.updateComponent(compareName);
     }
   }
 
