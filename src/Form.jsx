@@ -196,10 +196,21 @@ class Form extends Component {
     return this.errors;
   };
 
-  clearFieldError = (name = '') => {
-    delete this.errors[name];
-    this.touched.delete(name);
-    this.updateComponent(name);
+  compareEquality = (comapredName = '', compareName = '') => {
+    const values = clone(this.values);
+    const comparedValue = getPath(values, comapredName);
+    const compareValue = getPath(values, compareName)
+
+    if (comparedValue === compareValue) {
+      delete this.errors[compareValue];
+      this.touched.delete(compareValue);
+      this.updateComponent(compareValue);
+    }
+
+    if (comparedValue !== compareValue && !this.validateField(compareValue)) {
+      this.touched.add(compareValue);
+      this.updateComponent(compareValue);
+    }
   }
 
   resetTouched = () => {
@@ -245,7 +256,7 @@ class Form extends Component {
     resetTouched: this.resetTouched,
     clearFields: this.clearFields,
     getTouchedValues: this.getTouchedValues,
-    clearFieldError: this.clearFieldError,
+    compareEquality: this.compareEquality,
   };
 
   render() {
